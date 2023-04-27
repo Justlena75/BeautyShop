@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link th:href="@{/css/index.css}" rel="stylesheet">
+    <title>Заказы</title>
+</head>
+<body>
+<form method="get" th:action="@{/person account}">
+    <button type="submit">Вернуться в личный кабинет</button>
+</form><br>
+<h3>Заказы</h3>
+<div class="grid">
+    <div th:each="order : ${orders}">
+        <h4 th:text="'Заказ №' + ${order.getNumber()}"></h4>
+        <img th:src="'/img/' + ${order.getProduct().getImageList()[0].getFileName()}" width="300px">
+        <p th:text="'Наименование: ' + ${order.getProduct().getTitle()}">
+        <p th:text="'Количество: ' + ${order.getCount()}">
+        <p th:text="'Цена: ' + ${order.getPrice()}">
+        <p th:text="'Дата заказа: ' + ${#temporals.format(order.getDateTime(), 'dd-MMM-yyyy')}"></p>
+        <p th:text="'Cтатус: ' + ${order.getStatus()}">
+    </div>
+</div>
+<form style="text-align: end" method="get" th:action="@{/orders/delete}">
+    <button style="text-align: end" type="submit">Удалить заказы</button>
+</form>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link th:href="@{/css/index.css}" rel="stylesheet">
+    <title>Редактирование товара</title>
+</head>
+<body>
+<form method="get" th:action="@{/admin}">
+    <button type="submit">Вернуться в личный кабинет администратора</button>
+</form>
+<br>
+<h3>Редактирование товара</h3>
+<form th:method="POST" th:action="@{/admin/product/edit/{id}(id=${product.getId()})}" th:object="${product}"
+      enctype="multipart/form-data">
+    <label class="green" for="title">Введите наименование товара: </label>
+    <input type="text" th:field="*{title}" placeholder="Наименование" id="title">
+    <div style="color: red" th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></div>
+    <br>
+    <br>
+    <label class="green" for="description">Введите описание товара: </label>
+    <textarea th:field="*{description}" placeholder="Описание" id="description"></textarea>
+    <div style="color: red" th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></div>
+    <br>
+    <br>
+    <label class="green" for="price">Введите цену товара: </label>
+    <input type="number" th:field="*{price}" min="1" step="0.00" placeholder="Цена" id="price">
+    <div style="color: red" th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></div>
+    <br>
+    <br>
+    <label class="green" for="category">Выберите тип средства: </label>
+    <select name="category" th:field="*{category}" id="category">
+        <div th:each="element : ${category}">
+            <option th:text="${element.getName()}" th:value="${element.getId()}">
+        </div>
+    </select>
+    <div style="color: red" th:if="${#fields.hasErrors('category')}" th:errors="*{category}"></div>
+    <br>
+    <br>
+    <label class="green" for="seller">Введите наименование бренда: </label>
+    <textarea th:field="*{seller}" placeholder="Бренд" id="seller"></textarea>
+    <div style="color: red" th:if="${#fields.hasErrors('seller')}" th:errors="*{seller}"></div>
+    <br>
+    <br>
+    <button type="submit">Редактировать</button>
+</form>
+</body>
+</html>

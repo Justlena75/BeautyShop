@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link th:href="@{/css/index.css}" rel="stylesheet">
+    <title>Главная страница</title>
+</head>
+<body>
+<form method="get" th:action="@{/authentication}">
+    <button type="submit">Войти</button>
+</form>
+<br>
+<form method="get" th:action="@{/registration}">
+    <button type="submit">Зарегистрироваться</button>
+</form>
+<br>
+<h1>Добро пожаловать в Beautyshop!</h1>
+<h2>ИНТЕРНЕТ-МАГАЗИН ОРГАНИЧЕСКОЙ КОСМЕТИКИ</h2>
+<form th:method="POST" th:action="@{/product/search}">
+    <fieldset class="green">
+        <legend>Выберите параметры для сортировки, поиска, фильтрации:</legend>
+        <label for="search">Поиск по наименованию</label>
+        <input type="text" id="search" name="search" th:value="*{value_search}">
+        <br>
+        <p>Цена, руб.</p>
+        <label for="ot">от</label>
+        <input type="text" name="ot" id="ot" th:value="*{value_price_ot}">
+        <label for="do">до</label>
+        <input type="text" name="do" id="do" th:value="*{value_price_do}">
+        <br>
+        <input type="radio" id="ascending_price" name="price" value="sorted_by_ascending_price">
+        <label for="ascending_price">Отсортировать по возрастанию цены</label>
+        <input type="radio" id="descending_price" name="price"
+               value="sorted_by_descending_price">
+        <label for="descending_price">Отсортировать по убыванию цены</label>
+        <p>Тип средства: </p>
+        <input type="radio" id="serum" name="contract" value="serum">
+        <label for="serum">Сыворотка</label>
+        <input type="radio" id="cream" name="contract" value="cream">
+        <label for="cream">Крем</label>
+        <input type="radio" id="toner" name="contract" value="toner">
+        <label for="toner">Тоник</label>
+        <br>
+        <button type="submit">Найти</button>
+    </fieldset>
+</form>
+<fieldset class="grid">
+    <legend>Результат поиска, cортировки, фильтрации:</legend>
+    <div th:each="product : ${search_product}">
+        <img th:src="'/img/' + ${product.imageList[0].getFileName()}" width="300px">
+        <br>
+        <a class="one" th:href="@{/product/info/{id}(id=${product.getId()})}" th:text="${product.getTitle()}"></a>
+        <p class="one" th:text="'Цена: ' + ${product.getPrice()}"></p>
+    </div>
+</fieldset>
+<h3>Каталог:</h3>
+<div class="grid">
+    <div th:each="product : ${products}">
+        <img th:src="'/img/' + ${product.imageList[0].getFileName()}" width="300px">
+        <br>
+        <a class="one" th:href="@{/product/info/{id}(id=${product.getId()})}" th:text="${product.getTitle()}"></a>
+        <p class="one" th:text="'Цена: ' + ${product.getPrice()}"></p>
+    </div>
+</div>
+</body>
+</html>

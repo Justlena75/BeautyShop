@@ -1,4 +1,123 @@
-a {
-    text-decoration: none;
-    color: brown;
+.reg{
+    display: grid;
+    grid-template-columns: 34% 32% 34%;
+    color: darkolivegreen;
 }
+.greenborder{
+    border-color: olive;
+}
+button {
+    background-color: lightgrey;
+    color: darkolivegreen;
+    font-family: "Sitka Text";
+    font-size: 12pt;
+    border-radius: 5px;
+    border: lightgrey;
+}
+img{
+    border-radius: 15px;
+}
+
+p, h4, th, td, select{
+    font-family: "Sitka Text";
+    color: darkgreen;
+}
+.green{
+    color: darkolivegreen;
+    font-family: "Sitka Text";
+}
+.grid{
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    border: 3px solid deeppink;
+    border-radius: 20px;
+    margin: 25px;
+}
+.grid div{
+    margin: 25px;
+    border: 1px solid olivedrab;
+    width:300px;
+    text-align: center;
+    border-radius: 15px;
+    padding-bottom: 10px;
+}
+.grid div:hover{
+    transform: translateY(-30px);
+    box-shadow: 10px 10px;
+    transition: 1s;
+    color: lightgrey;
+    margin: 10px;
+}
+.one {
+    text-decoration: none;
+    color: olivedrab;
+    font-family: "Sitka Text";
+    font-size: 15pt;
+}
+.two {
+    text-decoration: none;
+    color: olivedrab;
+    font-family: "Bahnschrift";
+    font-size: 13pt;
+}
+
+a:hover{
+    color:deeppink;
+    transition: 1s;
+}
+legend{
+    text-decoration: none;
+    color: deeppink;
+    font-family: "Sitka Text";
+    font-size: 15pt;
+}
+h1{
+    font-family: "Sitka Text";
+    color: deeppink;
+    font-size: 50pt;
+    text-shadow: 2px 2px lightpink;
+    text-align: center;
+    margin-bottom: 0px;
+}
+h2{
+    text-align: center;
+    font-family: "Sitka Text";
+    color: darkolivegreen;
+    font-size: 25pt;
+    text-shadow: 2px 2px lightseagreen;
+    text-align: center;
+}
+h3{
+    text-align: center;
+    font-family: "Sitka Text";
+    font-size: 25pt;
+    color: deeppink;
+    margin-top: 0px;
+}
+input, select, textarea{
+    border-radius: 5px;
+    margin: 6px;
+}
+fieldset{
+    border: 3px solid deeppink;
+    border-radius: 20px;
+    margin: 25px;
+    padding: 25px;
+}
+body{
+    background-color: honeydew;
+}
+td {
+    border: 1px solid green;
+    text-align: left;
+    padding: 10px;
+    vertical-align: middle;
+}
+
+
+
+
+
+
+
+
